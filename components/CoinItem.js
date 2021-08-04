@@ -4,7 +4,8 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 const coinItem = ({coin}) => {
     
     return (
-        <View style={styles.containerItem}>
+        <View style={[styles.containerItem, coin.market_cap_rank%2 === 0 ? styles.isEven
+            : styles.isOdd]}>
             <View style={styles.coinName}>
                 <Image 
                     style={styles.image} 
@@ -15,13 +16,13 @@ const coinItem = ({coin}) => {
                         {coin.name} 
                     </Text>
                     <Text style={styles.textSymbol}>
-                        {coin.symbol}
+                        {coin.market_cap_rank}. {coin.symbol.toUpperCase()}
                     </Text>
                 </View>
             </View>
-            <View>
+            <View style={styles.containerPrices}>
                 <Text style={styles.textPrice}> 
-                    {coin.current_price}
+                    {coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </Text>
                 <Text style={[
                     styles.pricePercentage, 
@@ -29,7 +30,7 @@ const coinItem = ({coin}) => {
                     ? styles.priceUp 
                     : styles.priceDown 
                 ]}> 
-                    {coin.price_change_percentage_24h}
+                    {coin.price_change_percentage_24h.toFixed(2)}%
                 </Text>
             </View>
     </View>
@@ -38,44 +39,56 @@ const coinItem = ({coin}) => {
 
 const styles = StyleSheet.create({
     containerItem: {
-        backgroundColor: '#121212',
+        //backgroundColor: '#1a1a1a',
         paddingTop: 10,
+        paddingBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    isEven: {
+        backgroundColor: "#1a1a1a"
+    },
+    isOdd: {
+        backgroundColor: "#141414"
+    },
     containerNames: {
-        marginLeft: 10,
+        marginLeft: 10
+    },
+    containerPrices: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     coinName: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingLeft: 10
     },
     image: {
         width: 35,
-        height: 35,
+        height: 35
     },
     textCoin: {
-        color: 'darkgray',
-        fontSize: 16,
+        color: 'lightgray',
+        fontSize: 16
     },
     textPrice: {
-        color: 'darkgray'
+        color: 'lightgray',
+        textAlign: 'right'
     },
     textSymbol: {
-        color: "#434343"
+        color: "#727272"
     },
     pricePercentage: {
         textAlign: 'right',
-    },
-    textPrice: {
-        color: 'white',
-        textAlign: 'right'
+        paddingLeft: 50,
+        paddingRight: 10
     },
     priceUp: {
-        color: "green"
+        color: "#008000"
     },
     priceDown: {
-        color: "red"
+        color: "#ff3333"
     }
 });
 

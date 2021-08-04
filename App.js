@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text ,FlatList, StyleSheet, TextInput, StatusBar } from 'react-native'
+import { View, Text ,FlatList, StyleSheet, TextInput, StatusBar, SafeAreaView } from 'react-native'
 import CoinItem from './components/CoinItem'
 
 const App = () => {
@@ -20,14 +20,15 @@ const App = () => {
 
     return (
     <View style={styles.container}>   
-    <StatusBar backgroundColor="#141414"/>
+    <StatusBar backgroundColor="#1a1a1a"/>
+    <SafeAreaView backgroundColor="#1a1a1a"/>
       <View style={styles.header}>
         <Text style={styles.title}>CrytoMarket</Text>
         <TextInput 
-        style={styles.searchInput}
-        placeholder="Search"
-        placeholderTextColor="whitesmoke"
-        onChangeText={(text) => setSearch(text)}
+          style={styles.searchInput}
+          placeholder="Search"
+          placeholderTextColor="#a1a1a1"
+          onChangeText={(text) => setSearch(text)}
         />
       </View> 
       <FlatList 
@@ -58,30 +59,30 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#141414',
+    backgroundColor: '#1a1a1a',
     alignItems: 'center',
     flex: 1
   },
   title: {
     color: "whitesmoke",
     marginTop: 20,
-    fontSize: 20,
+    fontSize: 20
   },
   list: {
-    width:"90%"
+    width:"100%"
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "90%",
-    marginBottom: 20,
+    marginBottom: 10
   },
   searchInput: {
     color: "whitesmoke",
     borderBottomColor: "whitesmoke",
     borderBottomWidth: 1,
     width: "40%",
-    textAlign: "center",
+    textAlign: "center"
   }
 })
 export default App
