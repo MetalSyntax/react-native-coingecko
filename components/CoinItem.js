@@ -33,13 +33,12 @@ const coinItem = ({coin}) => {
                     {coin.price_change_percentage_24h.toFixed(2)}%
                 </Text>
             </View>
-    </View>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     containerItem: {
-        //backgroundColor: '#1a1a1a',
         paddingTop: 10,
         paddingBottom: 10,
         flexDirection: 'row',
