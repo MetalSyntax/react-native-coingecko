@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 
 const coinItem = ({coin}) => {
-    
     return (
         <View style={[styles.containerItem, coin.market_cap_rank%2 === 0 ? styles.isEven
             : styles.isOdd]}>

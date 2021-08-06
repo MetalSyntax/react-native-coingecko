@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text ,FlatList, StyleSheet, TextInput, StatusBar, SafeAreaView } from 'react-native'
+import { TouchableOpacity, View, Text ,FlatList, StyleSheet, TextInput, StatusBar, SafeAreaView } from 'react-native'
 import CoinItem from './CoinItem'
 
-const CoinHome = () => {
+const CoinHome = ({navigation}) => {
 
   const[coins, setCoins] = useState([])
   const[search, setSearch] = useState('')
@@ -17,7 +17,6 @@ const CoinHome = () => {
   useEffect(() => {
     loadData()
   },[]);
-
     return (
     <View style={styles.container}>   
         <StatusBar backgroundColor="#1a1a1a"/>
@@ -40,7 +39,11 @@ const CoinHome = () => {
                 )}
                 renderItem={
                 ({item}) => {
-                    return <CoinItem coin={item}/>
+                    return (
+                      <TouchableOpacity onPress={() => navigation.navigate('Pages', {id: item.id }) }>
+                        <CoinItem coin={item} />
+                      </TouchableOpacity>
+                    )
                 }
                 }
                 showsVerticalScrollIndicator={false}

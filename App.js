@@ -6,10 +6,27 @@ import CoinPage from './components/CoinPage';
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  config
+};
+const config = {
+  screens: {
+    Home: {
+      name: 'Home',
+      path: '/'
+    },
+    Pages: {
+      name: 'Pages',
+      path: '/:id'
+    },
+    NotFound: '*',
+  },
+};
+
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }} >
+    <NavigationContainer linking={linking}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#1a1a1a' } }} >
         <Stack.Screen name="Home" component={CoinHome} />
         <Stack.Screen name="Pages" component={CoinPage} />
       </Stack.Navigator>
