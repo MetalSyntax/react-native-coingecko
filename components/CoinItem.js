@@ -21,7 +21,7 @@ const coinItem = ({coin}) => {
             </View>
             <View style={styles.containerPrices}>
                 <Text style={styles.textPrice}> 
-                    {coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    ${coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </Text>
                 <Text style={[
                     styles.pricePercentage, 
@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     containerPrices: {
-        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        width: '45%'
     },
     coinName: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingLeft: 10
+        justifyContent: 'flex-start',
+        paddingLeft: 10,
+        width: '55%'
     },
     image: {
         width: 35,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     textCoin: {
         color: 'lightgray',
-        fontSize: 16
+        fontSize: 14
     },
     textPrice: {
         color: 'lightgray',
@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
         color: "#727272"
     },
     pricePercentage: {
-        textAlign: 'right',
-        paddingLeft: 50,
-        paddingRight: 10
+        textAlign: 'center'
     },
     priceUp: {
         color: "#008000"
